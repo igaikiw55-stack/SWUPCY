@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข่าวสารกิจกรรม | สภานักเรียนโรงเรียนนวมินทราชินูทิศ เตรียมอุดมศึกษาน้อมเกล้า</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        
+        :root { 
+            --canva-green: #0284c7;      
+            --canva-pink: #e91e63;       
+            --text-dark: #333;
+        }
+
+        body { background-color: #ffffff; color: var(--text-dark); padding-top: 80px; }
+        
+        header { background-color: white; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 20px; }
+        .logo-area { display: flex; align-items: center; gap: 12px; color: var(--canva-green); text-decoration: none; }
+        .logo-img { width: 45px; height: 45px; background-color: var(--canva-pink); border-radius: 50%; }
+        .logo-text h1 { font-size: 1.1rem; font-weight: 700; color: var(--canva-green); }
+        .logo-text p { font-size: 0.75rem; color: #666; }
+        .nav-links { display: flex; list-style: none; gap: 15px; }
+        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; transition: 0.3s; padding: 8px 15px; border-radius: 5px; }
+        .nav-links a:hover, .nav-links a.active { background-color: var(--canva-green); color: white; font-weight: 600; }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; }
+        
+        .section-heading { background-color: var(--canva-green); color: white; display: inline-block; padding: 8px 20px; font-size: 1.2rem; font-weight: 600; margin-bottom: 30px; border-radius: 4px; }
+        
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .news-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #e0e0e0; display: flex; flex-direction: column; transition: 0.3s; }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .news-img { height: 240px; background-size: cover; background-position: center; position: relative; }
+        .news-tag { position: absolute; top: 12px; left: 12px; background-color: var(--canva-pink); color: white; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 3px; }
+        .news-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .news-date { font-size: 0.8rem; color: #888; margin-bottom: 10px; }
+        .news-content h3 { font-size: 1.1rem; color: var(--canva-green); margin-bottom: 10px; line-height: 1.4; font-weight: 700; }
+        .news-content p { font-size: 0.9rem; color: #555; line-height: 1.5; }
+
+        footer { background-color: #111; color: #aaa; text-align: center; padding: 25px 20px; margin-top: 60px; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo-area">
+                <div class="logo-img"></div>
+                <div class="logo-text">
+                    <h1>สภานักเรียนโรงเรียนนวมินทราชินูทิศ เตรียมอุดมศึกษาน้อมเกล้า</h1>
+                    <p>Nawaminthrachinuthit Triam Udom Suksa Nomklao Student Council</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="vision.html">วิสัยทัศน์</a></li>
+                <li><a href="structure.html">ทำเนียบคณะกรรมการ</a></li>
+                <li><a href="news.html" class="active">ข่าวสารกิจกรรม</a></li>
+                <li><a href="report.html">แจ้งปัญหา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="section-heading">ข่าวสารและกิจกรรมล่าสุด</div>
+        
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600');">
+                    <span class="news-tag">INQ CENTER</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-date">25 พฤษภาคม 2026</div>
+                        <h3>กิจกรรมปฐมนิเทศนักเรียนใหม่</h3>
+                    </div>
+                    <p>สภานักเรียนร่วมต้อนรับและจัดกิจกรรมนันทนาการให้กับน้อง ๆ ม.1 และ ม.4 ในวันปฐมนิเทศประจำปีการศึกษา</p>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600');">
+                    <span class="news-tag">INQ CENTER</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-date">18 พฤษภาคม 2026</div>
+                        <h3>ประชุมสภานักเรียนนัดแรก</h3>
+                    </div>
+                    <p>คณะกรรมการสภานักเรียนชุดใหม่ร่วมประชุมวางแผนนโยบายและโปรเจกต์ "YoUr Genius X Our Power" ประจำภาคเรียนที่ 1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 สภานักเรียนโรงเรียนนวมินทราชินูทิศ เตรียมอุดมศึกษาน้อมเกล้า</p>
+    </footer>
+
+</body>
+</html>

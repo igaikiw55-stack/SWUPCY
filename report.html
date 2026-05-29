@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบแจ้งปัญหาออนไลน์ | สภานักเรียนโรงเรียนนวมินทราชินูทิศ เตรียมอุดมศึกษาน้อมเกล้า</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; }
+        :root { 
+            --canva-green: #0284c7;      
+            --canva-pink: #e91e63;       
+            --text-dark: #333;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col justify-between pt-[80px]">
+
+    <!-- Header Navbar คุมโทนเดียวกับหน้าแรก -->
+    <header class="bg-white position fixed w-full top-0 left-0 z-50 shadow-[0_2px_10px_rgba(0,0,0,0.1)] px-4 py-3">
+        <div class="max-w-[1300px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3 text-[#0284c7] no-underline">
+                <div class="w-[45px] height-[45px] bg-[#e91e63] rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-circle-exclamation text-xl"></i></div>
+                <div>
+                    <h1 class="text-lg font-bold text-[#0284c7] leading-tight">สภานักเรียนโรงเรียนนวมินทราชินูทิศ เตรียมอุดมศึกษาน้อมเกล้า</h1>
+                    <p class="text-xs text-gray-500">ระบบแจ้งปัญหาออนไลน์ (Student Council Report System)</p>
+                </div>
+            </a>
+            <ul class="flex items-center list-none gap-2 m-0 p-0 flex-wrap justify-center">
+                <li><a href="index.html" class="text-[#333] no-underline text-[0.95rem] px-3.5 py-2 rounded-lg transition hover:bg-[#0284c7] hover:text-white">หน้าแรก</a></li>
+                <li><a href="vision.html" class="text-[#333] no-underline text-[0.95rem] px-3.5 py-2 rounded-lg transition hover:bg-[#0284c7] hover:text-white">วิสัยทัศน์</a></li>
+                <li><a href="structure.html" class="text-[#333] no-underline text-[0.95rem] px-3.5 py-2 rounded-lg transition hover:bg-[#0284c7] hover:text-white">ทำเนียบคณะกรรมการ</a></li>
+                <li><a href="news.html" class="text-[#333] no-underline text-[0.95rem] px-3.5 py-2 rounded-lg transition hover:bg-[#0284c7] hover:text-white">ข่าวสารกิจกรรม</a></li>
+                <li><a href="report.html" class="bg-[#0284c7] text-white font-semibold no-underline text-[0.95rem] px-3.5 py-2 rounded-lg transition">แจ้งปัญหา</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 max-w-4xl mt-6 flex-grow">
+        
+        <div id="user-page" class="page-section">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-slate-800">สวัสดีครับ พบปัญหาอะไรภายในโรงเรียนแจ้งสภาได้ที่นี่</h2>
+                <p class="text-slate-600 mt-1">กรุณาเลือกประเภทปัญหาเพื่อดำเนินการกรอกข้อมูล</p>
+                
+                <div class="mt-4 flex justify-center gap-2">
+                    <button onclick="switchPage('user-page')" class="bg-[#0284c7] text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition cursor-pointer">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i> หน้ากรอกแบบฟอร์ม
+                    </button>
+                    <button onclick="navigateToAdmin()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition cursor-pointer">
+                        <i class="fa-solid fa-user-shield mr-1"></i> แดชบอร์ดแอดมินสภานักเรียน
+                    </button>
+                </div>
+            </div>
+
+            <!-- กล่องเลือกประเภทคุมธีม เขียว-ชมพูมาเจนต้า -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <button onclick="selectType('maintenance')" id="btn-type-maintenance" class="flex flex-col items-center justify-center p-6 bg-white border-2 border-[#0284c7] rounded-xl shadow-sm text-center cursor-pointer group">
+                    <div class="w-16 h-16 bg-[#0284c7]/10 text-[#0284c7] rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <span class="text-lg font-semibold text-slate-800">แจ้งอุปกรณ์ชำรุด / เสีย</span>
+                    <span class="text-sm text-slate-500 mt-1">แอร์ ไฟ ลิฟต์ ประตู ห้องน้ำ อุปกรณ์ต่างๆ</span>
+                </button>
+
+                <button onclick="selectType('smoking')" id="btn-type-smoking" class="flex flex-col items-center justify-center p-6 bg-white border-2 border-slate-200 rounded-xl shadow-sm hover:shadow-md transition text-center cursor-pointer group">
+                    <div class="w-16 h-16 bg-[#e91e63]/10 text-[#e91e63] rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-smoking"></i>
+                    </div>
+                    <span class="text-lg font-semibold text-slate-800">แจ้งเหตุสูบบุหรี่ / บุหรี่ไฟฟ้า</span>
+                    <span class="text-sm text-slate-500 mt-1">แอบสูบในพื้นที่ห้ามสูบ บันไดหนีไฟ ห้องน้ำ</span>
+                </button>
+            </div>
+
+            <!-- ฟอร์มกรอกข้อมูล -->
+            <form id="report-form" onsubmit="handleSubmit(event)" class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h3 id="form-title" class="text-lg font-semibold text-slate-800 mb-4 pb-2 border-b border-slate-100">
+                    <i class="fa-solid fa-wrench text-[#0284c7] mr-2"></i>รายละเอียดการแจ้ง: อุปกรณ์ชำรุด / เสีย
+                </h3>
+
+                <div id="field-maintenance" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">ประเภทอุปกรณ์ *</label>
+                        <select id="device-type" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#0284c7] focus:outline-none">
+                            <option value="">-- เลือกประเภทอุปกรณ์ --</option>
+                            <option value="ระบบไฟฟ้า/แสงสว่าง">ระบบไฟฟ้า / แสงสว่าง</option>
+                            <option value="เครื่องปรับอากาศ">เครื่องปรับอากาศ</option>
+                            <option value="ระบบประปา/ห้องน้ำ">ระบบประปา / ห้องน้ำ</option>
+                            <option value="ลิฟต์/บันไดเลื่อน">ลิฟต์ / บันไดเลื่อน</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">ระดับความเร่งด่วน</label>
+                        <div class="flex gap-4">
+                            <label class="inline-flex items-center text-slate-700"><input type="radio" name="priority" value="ปกติ" checked class="mr-2 accent-[#0284c7]"> ปกติ</label>
+                            <label class="inline-flex items-center text-amber-600"><input type="radio" name="priority" value="ด่วน" class="mr-2 accent-[#0284c7]"> ด่วน</label>
+                            <label class="inline-flex items-center text-[#e91e63]"><input type="radio" name="priority" value="ด่วนที่สุด" class="mr-2 accent-[#e91e63]"> ด่วนที่สุด</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="field-smoking" class="space-y-4 hidden">
+                    <div class="p-3 bg-pink-50 border border-pink-100 text-[#e91e63] rounded-lg text-sm flex items-start gap-2">
+                        <i class="fa-solid fa-shield-halved mt-0.5 text-[#e91e63]"></i>
+                        <span><strong>หมายเหตุความปลอดภัย:</strong> ข้อมูลการแจ้งเหตุนี้จะปลอดภัยและเห็นเฉพาะแอดมินสภานักเรียนเท่านั้น</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">ลักษณะที่พบ *</label>
+                        <select id="smoke-type" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#e91e63] focus:outline-none">
+                            <option value="พบเห็นคนกำลังสูบ">พบเห็นคนกำลังสูบอยู่</option>
+                            <option value="ได้กลิ่นควันรบกวน">ได้กลิ่นควันรบกวน</option>
+                            <option value="พบเศษก้นบุหรี่/หลักฐาน">พบเศษก้นบุหรี่ หรือร่องรอยการสูบ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-4 mt-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">สถานที่ / พิกัดที่พบ *</label>
+                        <input type="text" id="location" required placeholder="เช่น ตึก EP ชั้น 4 ห้องน้ำฝั่งซ้าย" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#0284c7] focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">รายละเอียดเพิ่มเติม</label>
+                        <textarea id="details" rows="2" placeholder="ระบุอาการชำรุด หรือข้อมูลเพิ่มเติมเพื่อให้แอดมินเข้าใจง่ายขึ้น" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#0284c7] focus:outline-none"></textarea>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 mt-4">
+                        <span class="block text-sm font-semibold text-slate-800 mb-3"><i class="fa-solid fa-id-card text-[#0284c7] mr-1"></i> ข้อมูลผู้แจ้งปัญหา *</span>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">ชื่อ - นามสกุล *</label>
+                                <input type="text" id="reporter-name" required placeholder="ชื่อ-นามสกุล" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284c7]">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">ชั้น / ห้อง *</label>
+                                <input type="text" id="reporter-class" required placeholder="เช่น ม.5/2" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284c7]">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">เลขที่ / รหัสประจำตัว *</label>
+                                <input type="text" id="reporter-no" required placeholder="เช่น เลขที่ 9" class="w-full p-2 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0284c7]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <button id="btn-submit" type="submit" class="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-medium p-3 rounded-lg shadow-sm transition cursor-pointer text-center">
+                        <i class="fa-solid fa-paper-plane mr-1"></i> ส่งข้อมูลแจ้งปัญหากับสภานักเรียน
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- หน้าสำหรับแอดมินสภาดูแลระบบ -->
+        <div id="admin-page" class="page-section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">แดชบอร์ดผู้ดูแลระบบ (สภานักเรียน)</h2>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="logoutAdmin()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition">ออกจากระบบ</button>
+                    <button onclick="clearAllData()" class="bg-pink-100 hover:bg-pink-200 text-[#e91e63] px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition">ล้างข้อมูลทั้งหมด</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-800 text-white text-sm">
+                                <th class="p-4">วัน-เวลา</th>
+                                <th class="p-4">ประเภท</th>
+                                <th class="p-4">รายละเอียด</th>
+                                <th class="p-4">สถานที่</th>
+                                <th class="p-4">ผู้แจ้ง</th>
+                                <th class="p-4 text-center" style="width: 170px;">ปรับสถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticket-table-body" class="text-sm divide-y divide-slate-100"></tbody>
+                    </table>
+                </div>
+                <div id="empty-state" class="p-8 text-center text-slate-400 hidden">ยังไม่มีข้อมูลแจ้งปัญหาเข้ามาในขณะนี้</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal ล็อกอินแอดมิน -->
+    <div id="login-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden backdrop-blur-sm">
+        <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-sm mx-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-4"><i class="fa-solid fa-lock text-[#0284c7] mr-1"></i> เข้าสู่ระบบแอดมินสภา</h3>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">ชื่อผู้ใช้</label>
+                    <input type="text" id="login-user" required class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284c7]">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">รหัสผ่าน</label>
+                    <div class="relative flex items-center">
+                        <input type="password" id="login-pass" required class="w-full p-2.5 pr-10 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#0284c7]">
+                        <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 text-slate-400 hover:text-slate-600 text-sm">
+                            <i id="password-toggle-icon" class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="login-error" class="text-xs text-[#e91e63] font-medium hidden">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
+                <button type="submit" class="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white p-2.5 rounded-xl text-sm font-semibold transition">เข้าสู่ระบบ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ส่วนท้ายคุมโทนสีเข้ม -->
+    <footer class="bg-zinc-900 text-zinc-400 text-center py-4 text-xs border-t border-zinc-800 mt-10">
+        <p>© 2026 สภานักเรียนโรงเรียนนวมินทราชินูทิศ เตรียมอุดมศึกษาน้อมเกล้า</p>
+    </footer>
+
+    <script>
+        let selectedCategory = 'maintenance';
+        let isAdminLoggedIn = false; 
+        const ADMIN_USER = "scntun2026";
+        const ADMIN_PASS = "S@c!N9t#u$N_2026%";
+
+        function switchPage(pageId) {
+            document.getElementById('login-modal').classList.add('hidden');
+            document.querySelectorAll('.page-section').forEach(page => page.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            if(pageId === 'admin-page') renderAdminTable();
+        }
+
+        function navigateToAdmin() { isAdminLoggedIn ? switchPage('admin-page') : openLoginModal(); }
+        
+        function openLoginModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
+            document.getElementById('login-error').classList.add('hidden');
+            document.getElementById('login-pass').type = "password";
+            document.getElementById('password-toggle-icon').className = "fa-solid fa-eye";
+        }
+
+        function togglePasswordVisibility() {
+            const passInput = document.getElementById('login-pass');
+            const toggleIcon = document.getElementById('password-toggle-icon');
+            if (passInput.type === "password") {
+                passInput.type = "text"; toggleIcon.className = "fa-solid fa-eye-slash";
+            } else {
+                passInput.type = "password"; toggleIcon.className = "fa-solid fa-eye";
+            }
+        }
+
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            if (document.getElementById('login-user').value === ADMIN_USER && document.getElementById('login-pass').value === ADMIN_PASS) {
+                isAdminLoggedIn = true; switchPage('admin-page');
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() { isAdminLoggedIn = false; switchPage('user-page'); }
+
+        function selectType(category) {
+            selectedCategory = category;
+            const btnMain = document.getElementById('btn-type-maintenance');
+            const btnSmoke = document.getElementById('btn-type-smoking');
+            const fieldMain = document.getElementById('field-maintenance');
+            const fieldSmoke = document.getElementById('field-smoking');
+            const formTitle = document.getElementById('form-title');
+            const btnSubmit = document.getElementById('btn-submit');
+
+            if (category === 'maintenance') {
+                btnMain.className = "flex flex-col items-center justify-center p-6 bg-white border-2 border-[#0284c7] rounded-xl shadow-sm text-center cursor-pointer group";
+                btnSmoke.className = "flex flex-col items-center justify-center p-6 bg-white border-2 border-slate-200 rounded-xl shadow-sm hover:shadow-md transition text-center cursor-pointer group";
+                fieldMain.classList.remove('hidden'); fieldSmoke.classList.add('hidden');
+                formTitle.innerHTML = `<i class="fa-solid fa-wrench text-[#0284c7] mr-2"></i>รายละเอียดการแจ้ง: อุปกรณ์ชำรุด / เสีย`;
+                btnSubmit.className = "w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-medium p-3 rounded-lg shadow-sm transition text-center cursor-pointer";
+            } else {
+                btnMain.className = "flex flex-col items-center justify-center p-6 bg-white border-2 border-slate-200 rounded-xl shadow-sm hover:shadow-md transition text-center cursor-pointer group";
+                btnSmoke.className = "flex flex-col items-center justify-center p-6 bg-white border-2 border-[#e91e63] rounded-xl shadow-sm text-center cursor-pointer group";
+                fieldMain.classList.add('hidden'); fieldSmoke.classList.remove('hidden');
+                formTitle.innerHTML = `<i class="fa-solid fa-smoking text-[#e91e63] mr-2"></i>รายละเอียดการแจ้ง: แจ้งเหตุสูบบุหรี่ / บุหรี่ไฟฟ้า`;
+                btnSubmit.className = "w-full bg-gradient-to-r from-[#e91e63] to-rose-600 text-white font-medium p-3 rounded-lg shadow-sm transition text-center cursor-pointer";
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const location = document.getElementById('location').value;
+            const details = document.getElementById('details').value;
+            const reporterFullInfo = `${document.getElementById('reporter-name').value} (${document.getElementById('reporter-class').value} เลขที่ ${document.getElementById('reporter-no').value})`;
+            
+            let problemDetail = '', badgeColor = '', categoryName = '';
+
+            if (selectedCategory === 'maintenance') {
+                const deviceType = document.getElementById('device-type').value;
+                if(!deviceType) { alert('กรุณาเลือกประเภทอุปกรณ์ก่อนครับ'); return; }
+                problemDetail = `[${deviceType}] อาการ: ${details || 'ไม่ระบุ'} (${document.querySelector('input[name="priority"]:checked').value})`;
+                categoryName = 'อุปกรณ์ชำรุด'; badgeColor = 'bg-sky-50 text-sky-800 border border-sky-100';
+            } else {
+                problemDetail = `[${document.getElementById('smoke-type').value}] ${details || 'ไม่ระบุ'}`;
+                categoryName = 'แอบสูบบุหรี่'; badgeColor = 'bg-pink-50 text-[#e91e63] border border-pink-100';
+            }
+
+            const ticket = { id: Date.now(), timestamp: new Date().toLocaleString('th-TH'), category: categoryName, badgeColor: badgeColor, detail: problemDetail, location: location, reporter: reporterFullInfo, status: 'รอดำเนินการ' };
+            let tickets = JSON.parse(localStorage.getItem('tickets')) || [];
+            tickets.unshift(ticket); localStorage.setItem('tickets', JSON.stringify(tickets));
+
+            alert('📝 ส่งข้อมูลแจ้งปัญหาเข้าสู่ระบบสภานักเรียนเรียบร้อยแล้วครับ!');
+            document.getElementById('report-form').reset(); selectType('maintenance');
+        }
+
+        function updateStatus(ticketId, newStatus) {
+            let tickets = JSON.parse(localStorage.getItem('tickets')) || [];
+            tickets = tickets.map(t => { if (t.id === ticketId) t.status = newStatus; return t; });
+            localStorage.setItem('tickets', JSON.stringify(tickets)); renderAdminTable();
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('ticket-table-body');
+            const emptyState = document.getElementById('empty-state');
+            let tickets = JSON.parse(localStorage.getItem('tickets')) || [];
+            tbody.innerHTML = '';
+            tickets.length === 0 ? emptyState.classList.remove('hidden') : emptyState.classList.add('hidden');
+
+            tickets.forEach(ticket => {
+                const tr = document.createElement('tr');
+                let statusSelectClass = ticket.status === 'ดำเนินการแล้ว' ? 'bg-emerald-50 text-emerald-700 border-emerald-200 font-semibold' : ticket.status === 'ไม่ดำเนินการ' ? 'bg-rose-50 text-rose-700 border-rose-200 font-semibold' : 'bg-amber-50 text-amber-700 border-amber-200 font-semibold';
+                tr.innerHTML = `
+                    <td class="p-4 text-slate-500 whitespace-nowrap">${ticket.timestamp}</td>
+                    <td class="p-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold ${ticket.badgeColor}">${ticket.category}</span></td>
+                    <td class="p-4 text-slate-700 max-w-xs break-words">${ticket.detail}</td>
+                    <td class="p-4 text-slate-700 font-medium">${ticket.location}</td>
+                    <td class="p-4 text-slate-600">${ticket.reporter}</td>
+                    <td class="p-4 text-center">
+                        <select onchange="updateStatus(${ticket.id}, this.value)" class="text-xs p-1.5 rounded-lg border focus:outline-none ${statusSelectClass}">
+                            <option value="รอดำเนินการ" ${ticket.status === 'รอดำเนินการ' ? 'selected' : ''}>⏳ รอดำเนินการ</option>
+                            <option value="ดำเนินการแล้ว" ${ticket.status === 'ดำเนินการแล้ว' ? 'selected' : ''}>✅ ดำเนินการแล้ว</option>
+                            <option value="ไม่ดำเนินการ" ${ticket.status === 'ไม่ดำเนินการ' ? 'selected' : ''}>❌ ไม่ดำเนินการ</option>
+                        </select>
+                    </td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        function clearAllData() { if(confirm('ต้องการลบประวัติการแจ้งปัญหาทั้งหมดใช่ไหม?')) { localStorage.removeItem('tickets'); renderAdminTable(); } }
+    </script>
+</body>
+</html>
